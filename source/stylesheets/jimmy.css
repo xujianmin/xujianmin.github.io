@@ -1,0 +1,10 @@
+.jimmy-index-ul {
+  clear: both;
+  margin: 0px;
+}
+
+.jimmy-index-ul li {
+  display: block;
+  list-style-type: none;
+  float: left;
+}
