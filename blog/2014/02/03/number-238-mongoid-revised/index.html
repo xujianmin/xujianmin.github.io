@@ -5,7 +5,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>#238 Mongoid (revised) - 自在几米墟</title>
+  <title>[翻译] Railscasts：#238 Mongoid (revised) - 自在几米墟</title>
   <meta name="author" content="Jimmy Xu">
 
   
@@ -74,7 +74,7 @@
     
   <header>
     
-      <h1 class="entry-title">#238 Mongoid (Revised)</h1>
+      <h1 class="entry-title">[翻译] Railscasts：#238 Mongoid (Revised)</h1>
     
 
     
@@ -114,14 +114,16 @@
 
 <figure class='code'><figcaption><span>terminal </span></figcaption>
 <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ brew install mongodb</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>brew install mongodb
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>这样就会下载和安装MongoDB了。完成以后，屏幕会提示一些指南说明如何启动MongoDB。我们可以通过下列的命令还手动启动数据库。</p>
 
 <figure class='code'><figcaption><span>terminal </span></figcaption>
 <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ mongod run --config /usr/local/etc/mongod.conf</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>mongod run --config /usr/local/etc/mongod.conf
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>我们可以通过浏览 <a href="http://localhost:28017">http://localhost:28017</a> 来测试数据库已经启动且正常运行。在这个地址会应该可以看到MongoDB的web交互界面。</p>
@@ -132,7 +134,8 @@
 
 <figure class='code'><figcaption><span>terminal </span></figcaption>
 <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ rails new store --skip-active-record</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>rails new store --skip-active-record
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>接下来，我们在Gemfile中增加Mongoid的gem包。为了确定我们运行的是最新的版本，我们会具体指定版本号。像平常一样，需要在修改之后执行bundle安装Mongoid。</p>
@@ -147,14 +150,16 @@
 
 <figure class='code'><figcaption><span>terminal </span></figcaption>
 <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ rails g mongoid:config</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>rails g mongoid:config
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>我们将保持所有的默认配置选项，但是这个文件中有很多很好的注释是值得通读一遍以了解有什么设置可以做。接着，我们生成一个scaffolding做一个有“名称”和“价格”的“产品”的模型。注意，在MongoDB中正确的“价格”的类型是big_decimal。</p>
 
 <figure class='code'><figcaption><span>terminal </span></figcaption>
 <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ rails g scaffold product name price:big_decimal</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>rails g scaffold product name price:big_decimal
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Mongoid覆写了模型生成器，这个定制的生成器会在我们生成模型时被调用。看一下这个模型文件，我们可以看到Mongoid的模型是什么样子的。这是一个简单的Ruby类引用了（include）Mongoid::Document模块同时调用field方法实现我们在模型里需要的各个参数。</p>
@@ -206,11 +211,11 @@
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;field&quot;</span><span class="nt">&gt;</span>
-</span><span class='line'>  <span class="err">&lt;</span>%= f.label :released_on%&gt;
-</span><span class='line'>  <span class="nt">&lt;br/&gt;</span>
-</span><span class='line'>  <span class="err">&lt;</span>%= f.text_field :released_on%&gt;
-</span><span class='line'><span class="nt">&lt;/div&gt;</span>
+</pre></td><td class='code'><pre><code class='css+erb'><span class='line'><span class="o">&lt;</span><span class="nt">div</span> <span class="nt">class</span><span class="o">=</span><span class="s2">&quot;field&quot;</span><span class="o">&gt;</span>
+</span><span class='line'>  <span class="cp">&lt;%=</span> <span class="n">f</span><span class="o">.</span><span class="n">label</span> <span class="ss">:released_on</span><span class="cp">%&gt;</span>
+</span><span class='line'>  <span class="o">&lt;</span><span class="nt">br</span><span class="o">/&gt;</span>
+</span><span class='line'>  <span class="cp">&lt;%=</span> <span class="n">f</span><span class="o">.</span><span class="n">text_field</span> <span class="ss">:released_on</span><span class="cp">%&gt;</span>
+</span><span class='line'><span class="o">&lt;/</span><span class="nt">div</span><span class="o">&gt;</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
@@ -293,7 +298,8 @@
 
 <figure class='code'><figcaption><span>terminal </span></figcaption>
 <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ rails g model review content</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>rails g model review content
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>现在，我们有了两个模型。我们希望每个“产品”（Product）有多个“评论”（Review）。可以用两种方法来定义这种关联。我们可以添加一个引用关联，就像在ActiveRecord里的那样。但是这里，我们采用内嵌的方式。要定义内嵌，我们可以使用embeds_many方法。</p>
