@@ -31,3 +31,7 @@ p.poem-from {
 p.poem-from i {
   font-style: italic;
 }
+
+.entry-content p {
+  text-indent: 2em;
+}
