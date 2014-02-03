@@ -4,7 +4,7 @@
   <title><![CDATA[Category: 文科生的开发之旅 | 自在几米墟]]></title>
   <link href="http://xujianmin.github.io/blog/categories/wen-ke-sheng-de-kai-fa-zhi-lu/atom.xml" rel="self"/>
   <link href="http://xujianmin.github.io/"/>
-  <updated>2014-02-03T15:19:19+08:00</updated>
+  <updated>2014-02-03T18:24:04+08:00</updated>
   <id>http://xujianmin.github.io/</id>
   <author>
     <name><![CDATA[Jimmy Xu]]></name>
@@ -61,9 +61,12 @@
 
 <p>不管你今后能不能成为“晃动长矛”，我们都有只会说“妈妈爸爸”的时候。</p>
 
-<p>PS：下个论题是做Ruby和Rails的环境。话题有点大，会分几个部分来一一说明。<br/>
-PPS： 觉得这样的文章没干货？好吧，这里是高富帅学程序，干货请自觉前往各传统论坛、社区。<br/>
-PPPS： 因为只想讲一种环境安装。请高富帅自觉购买最新MacBook Pro一台。</p>
+<ul>
+<li>PS：下个论题是做Ruby和Rails的环境。话题有点大，会分几个部分来一一说明。</li>
+<li>PPS： 觉得这样的文章没干货？好吧，这里是高富帅学程序，干货请自觉前往各传统论坛、社区。</li>
+<li>PPPS： 因为只想讲一种环境安装。请高富帅自觉购买最新MacBook Pro一台。</li>
+</ul>
+
 ]]></content>
   </entry>
   
