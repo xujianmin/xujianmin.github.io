@@ -24,10 +24,9 @@
   <link href="/stylesheets/jimmy.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="自在几米墟" type="application/atom+xml">
   <script src="/javascripts/modernizr-2.0.js"></script>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.9.1.min.js"></script>
   <script src="/javascripts/octopress.js" type="text/javascript"></script>
-  <link href='http://fonts.googleapis.com/css?family=Quattrocento+Sans|Roboto:400,300' rel='stylesheet' type='text/css'>
-
+  <!-- <link href='http://fonts.useso.com/css?family=Droid+Serif:400italic,700italic,400,700' rel='stylesheet' type='text/css'> -->
   
   <script type="text/javascript">
     var _gaq = _gaq || [];
@@ -45,12 +44,12 @@
 </head>
 
 
-<body>
-	<div class="container">
-		<aside class="left">
-			<div class="inner-left">
-				<header>
-					<img src="http://www.gravatar.com/avatar/3fc336cf90cf36e47fbd3a320443fe33?s=200" alt="Gravatar of Jimmy Xu " title="Gravatar of Jimmy Xu" class="profilepic" />
+<body class="minijianxiyuan">
+  <div class="container">
+    <aside class="left">
+      <div class="inner-left">
+        <header>
+          <img src="http://www.gravatar.com/avatar/3fc336cf90cf36e47fbd3a320443fe33?s=200" alt="Gravatar of Jimmy Xu " title="Gravatar of Jimmy Xu" class="profilepic" />
 <hgroup>
   <h1 style="margin-bottom: 20px;"><a href="/">自在几米墟</a></h1>
   
@@ -70,19 +69,19 @@
 </hgroup>
 
 
-				</header>
-				<footer>
-					<p>
+        </header>
+        <footer>
+          <p>
 	
 	
 </p>
-				</footer>
-			</div>
-		</aside>
-    	<section class="right">
-    		<div class="inner-right">
-    			<div id="posts">
-    			  	<div>
+        </footer>
+      </div>
+    </aside>
+      <section class="right">
+        <div class="inner-right">
+          <div id="posts">
+              <div>
 <article role="article">
   
   <header>
@@ -167,15 +166,15 @@
 </aside>
 
 
-    			</div>
-    			<footer id="footer">
-    				<p class="credit">
-  Copyright &copy; 2014 - Jimmy Xu. Powered by <a href="http://octopress.org">Octopress</a>
+          </div>
+          <footer id="footer">
+            <p class="credit">
+  Copyright &copy; 2015 - Jimmy Xu. Powered by <a href="http://octopress.org">Octopress</a>
 </p>
 
 
-    			</footer>
-    			
+          </footer>
+          
 
 <script type="text/javascript">
       var disqus_shortname = 'xujianmin';
@@ -199,8 +198,7 @@
 
 
 
-<link href='http://fonts.googleapis.com/css?family=Quattrocento+Sans|Roboto:400,300' rel='stylesheet' type='text/css'>
-
+<!-- <link href='http://fonts.useso.com/css?family=Droid+Serif:400italic,700italic,400,700' rel='stylesheet' type='text/css'> -->
 
   <script type="text/javascript">
     var _gaq = _gaq || [];
@@ -217,8 +215,23 @@
 
 
 
-    		</div>
-    	</section>
-  	</div>
+        </div>
+      </section>
+    </div>
 </body>
+
+<!-- Chinese webfont -->
+<script type="text/javascript" src="http://www.youziku.com/UserDownFile/jquery.min.js"></script>
+<script type="text/javascript" src="http://www.youziku.com/UserDownFile/jquery.md5.js"></script>
+<script type="text/javascript"> 
+    function youziku19505() 
+        {
+            var resultStr = $(".minijianxiyuan").text();
+            var md5 = "";
+            resultStr = Trim(resultStr);
+            resultStr = SelectWord(resultStr);
+            md5 = $.md5("2523a562e71047938625bb1e6a363344"+"minijianxiyuan" + resultStr);
+            $.getJSON("http://www.youziku.com/webfont/CSSPOST?jsoncallback=?", { "id": md5, "guid": "2523a562e71047938625bb1e6a363344", "type": "5" }, function (json) { if (json.result == 0) {/*alert("需要生成");*/ $.post("http://www.youziku.com/webfont/PostCorsCreateFont", { "name": "minijianxiyuan", "gid": "2523a562e71047938625bb1e6a363344", "type": "5", "text": resultStr }, function (json) { if (json == "0") { /*alert("参数不对");*/ } else if (json == "2") {/*alert("超过每日生成字体数的上限");*/ } else if (json == "3") { /*alert("当前正在生成请稍后");*/ } else {/*alert("正在生成");*/ } }); } else {/*alert("下载css文件");*/ loadExtentFile("http://www.youziku.com/webfont/css?id=" + md5 + "&guid=" + "2523a562e71047938625bb1e6a363344" + "&type=5"); } }); } (function youziku() { if (window.location.href.toString().substring(0, 7) == "file://") { alert("你当前是通过双击打开html文件，进行本地测试的，这样看不到字体效果，一定要通过本地建立的虚拟网站或发布到外网进行测试。详见有字库的使用说明。"); }else{ youziku19505(); } })()
+</script>
+
 </html>
