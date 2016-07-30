@@ -1,13 +1,21 @@
-<img src="{% gravatar_image 200 %}" alt="Gravatar of {{ site.author}} " title="Gravatar of {{ site.author }}" class="profilepic" />
+<!-- <img src="{% gravatar_image 200 %}" alt="Gravatar of {{ site.author}} " title="Gravatar of {{ site.author }}" class="profilepic" /> -->
+
+{% img hd-image /images/jimixu.jpeg 50 50 %}
+
 <hgroup>
-  <h1><a href="{{ root_url }}/">{{ site.title }}</a></h1>
+  <h3 style="margin-bottom: 20px;"><a href="{{ root_url }}/">{{ site.title }}</a></h3>
   {% if site.subtitle %}
-    <h2 class="subtitle">{{ site.subtitle }}</h2>
+    <h4 class="subtitle">{{ site.subtitle }}</h4>
+    <p class="poem">Yesterday is history,</p>
+    <p class="poem">Tomorrow is mistery,</p>
+    <p class="poem">But Today is a gift,</p>
+    <p class="poem">So we call that, the Present.</p>
+    <p class="poem-from pull-right"> -- By Master Wu Kuai in <i>Kong Fu Panda</i></p>
   {% endif %}
+  <hr />
   <ul class="jimmy-index-ul">
-    <li><a href="{{ root_url }}/">首页</a></li>
+    <li><a class "btn" href="{{ root_url }}/">首页</a></li>
     <li><a href="/blog/archives">归档</a></li>
     <li><a href="/about.html">关于我</a><li>
   </ul>
-
 </hgroup>
