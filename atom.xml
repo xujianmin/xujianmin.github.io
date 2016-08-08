@@ -4,7 +4,7 @@
   <title><![CDATA[自在几米墟]]></title>
   <link href="http://xujianmin.github.io/atom.xml" rel="self"/>
   <link href="http://xujianmin.github.io/"/>
-  <updated>2016-04-22T01:29:32+08:00</updated>
+  <updated>2016-08-08T18:57:55+08:00</updated>
   <id>http://xujianmin.github.io/</id>
   <author>
     <name><![CDATA[Jimmy Xu]]></name>
@@ -12,6 +12,205 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[在Mac OS X El Caption上用Postgres.app来搭建Rails 5.0.0开发环境]]></title>
+    <link href="http://xujianmin.github.io/blog/2016/08/08/mac-ox-s-el-captin-with-postgres-dot-app-and-rails/"/>
+    <updated>2016-08-08T17:41:14+08:00</updated>
+    <id>http://xujianmin.github.io/blog/2016/08/08/mac-ox-s-el-captin-with-postgres-dot-app-and-rails</id>
+    <content type="html"><![CDATA[<p>最近研究一篇整合Angular、Bootstrap、Rails和Postgres的教程。里面推荐采用Postgres来做关系型数据库。网上有很多做法，但本着天真文科生的本性，决定用最简单的方式：一路图形界面的工具。</p>
+
+<!-- more -->
+
+
+<p>先是习惯性地上网一搜，结果发现各种对Postgres.app的吐槽。症状是Rails的应用不能连上数据库，吐槽的点很多。归结下来主要是两个问题：</p>
+
+<p>1）一是Postgress.app采用的应该是MacOS X图形界面应用的部署规则，config文件不再出现在/etc的常规路径下面，gem安装时无法在默认的地方找到配置文件，导致安装不能成功。</p>
+
+<p>2）二是装完连不上，用户名密码等问题。</p>
+
+<p>以下是笔者的安装过程，基本还是比较顺利。</p>
+
+<p>首先是找到Postgres.app的官方网站：<a href="http://postgresapp.com/," title="http://postgresapp.com">http://postgresapp.com</a></p>
+
+<p class="no-indent"><img src="http://xujianmin.github.io/images/20160808/postgres_app_homepage.png"></p>
+
+
+<p>下载这个zip文件。解压后可以看到一个上图大象的文件。双击安装。按提示来这个基本应该没有问题。</p>
+
+<p>中间的插曲是，Mac OS X会默认禁止没有做过验证的app运行。在System Preference里的Security &amp; Privacy下修改这个设置，让这个程序能够运行。记得先用登录密码打开左下方的锁。然后选择Anywhere。</p>
+
+<p class="no-indent"><img src="http://xujianmin.github.io/images/20160808/security_and_privacy.png"></p>
+
+
+<p>双击后会提示你将这个文件转到你的Application所在。没事，转吧。</p>
+
+<p>然后，你应该能看到有个大象的标志在系统栏里，右上方，和我的Evernote相得益彰啊~</p>
+
+<p class="no-indent"><img src="http://xujianmin.github.io/images/20160808/postgres_on_the_task_bar.png"></p>
+
+
+<p>右键下，看看数据放在哪里了…</p>
+
+<p class="no-indent"><img src="http://xujianmin.github.io/images/20160808/right_click_postgres.png"></p>
+
+
+<p>接着装个图形界面的管理工具。连一下看看是不是可以用了。</p>
+
+<p><a href="https://eggerapps.at/postico/">https://eggerapps.at/postico/</a></p>
+
+<p>Postico的作者“碰巧”也是Postgres核心开发组的成员。但不要直接去Apps Store里下哟，那可是实打实收费CNY300+，可以先在官网下一个evaluate版本，虽然有些限制，但先试用下。真觉得好就买吧。</p>
+
+<p class="no-indent"><img src="http://xujianmin.github.io/images/20160808/postico_homepage.png"></p>
+
+
+<p>解压下载的zip文件，拷贝到Applications文件夹下，双击打开。</p>
+
+<p class="no-indent"><img src="http://xujianmin.github.io/images/20160808/postico_welcome_page.png"></p>
+
+
+<p>按Connect。第一次会要求你填写一些信息。</p>
+
+<p>如果作为开发机而已，没有其他的特别需要，只要填一个Nickname就可以了。其他留默认的即可。</p>
+
+<p>Host就是localhost，User就是你安装时用的用户名，Datebase是和用户名同名的。我就全留白了。</p>
+
+<p class="no-indent"><img src="http://xujianmin.github.io/images/20160808/postico_connect_info.png"></p>
+
+
+<p>连上数据库就是这样的界面。</p>
+
+<p class="no-indent"><img src="http://xujianmin.github.io/images/20160808/postico_connected_db.png"></p>
+
+
+<p>再来张有表格的样子。</p>
+
+<p class="no-indent"><img src="http://xujianmin.github.io/images/20160808/postico_database_with_tables.png"></p>
+
+
+<p>好了接着就是怎么配置和Rails的整合了。</p>
+
+<p>在Postgres.app官网的文档里，有关于ruby的配置说明。首先需要安装对Command Line Tools（命令行工具）的支持。</p>
+
+<p><a href="http://postgresapp.com/documentation/cli-tools.html," title="命令行工具安装">命令行工具安装</a></p>
+
+<p class="no-indent"><img src="http://xujianmin.github.io/images/20160808/postico_config_command_line_tools.png"></p>
+
+
+<p>注意，这里做完了要source一下，或者在直接运行一下export。Mac OS X一般用的都是Bash，没必要设置Fish的。</p>
+
+<p>用RVM做一个单独的gemset。</p>
+
+<figure class='code'><figcaption><span>terminal </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c"># 假设已经安装了ruby 2.3.0，否则先运行</span>
+</span><span class='line'><span class="c"># rvm get stable</span>
+</span><span class='line'><span class="c"># rvm install 2.3</span>
+</span><span class='line'><span class="c"># rvm use 2.3</span>
+</span><span class='line'>&gt; rvm gemset create receta
+</span><span class='line'>&gt; rvm use 2.3@receta
+</span><span class='line'>&gt; gem install rails
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Ruby的Postgres适配器的安装（<a href="http://postgresapp.com/documentation/configuration-ruby.html%EF%BC%89">http://postgresapp.com/documentation/configuration-ruby.html%EF%BC%89</a></p>
+
+<p class="no-indent"><img src="http://xujianmin.github.io/images/20160808/postico_config_ruby_gem_pg.png"></p>
+
+
+<p>于是手动安装pg。</p>
+
+<figure class='code'><figcaption><span>terminal </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c"># 先看一眼是不是在对的gemset下。</span>
+</span><span class='line'>&gt; rvm gemset list
+</span><span class='line'><span class="c"># 如果正确。</span>
+</span><span class='line'>&gt; <span class="nv">ARCHFLAGS</span><span class="o">=</span><span class="s2">&quot;-arch x86_64&quot;</span> gem install pg
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>现在可以新建一个rails测一下了。</p>
+
+<figure class='code'><figcaption><span>terminal </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>rails new receta -T -B --database<span class="o">=</span>postgressql
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>改一下gem的源，或者配置个vpn。笔者是直接用的vpn。</p>
+
+<figure class='code'><figcaption><span>terminal </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>&gt; bundle install
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>用Sublime Text 3打开这个项目，找到config/database.yml。我的机器上只要增加：host: localhost 这一行。</p>
+
+<figure class='code'><figcaption><span>~/config/database.yml </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># ~/config/database.yml</span>
+</span><span class='line'>
+</span><span class='line'><span class="ss">default</span><span class="p">:</span> <span class="o">&amp;</span><span class="n">default</span>
+</span><span class='line'>  <span class="ss">adapter</span><span class="p">:</span> <span class="n">postgresql</span>
+</span><span class='line'>  <span class="ss">encoding</span><span class="p">:</span> <span class="n">unicode</span>
+</span><span class='line'>  <span class="c1"># For details on connection pooling, see rails configuration guide</span>
+</span><span class='line'>  <span class="c1"># http://guides.rubyonrails.org/configuring.html#database-pooling</span>
+</span><span class='line'>  <span class="ss">pool</span><span class="p">:</span> <span class="o">&lt;%=</span> <span class="no">ENV</span><span class="o">.</span><span class="n">fetch</span><span class="p">(</span><span class="s2">&quot;RAILS_MAX_THREADS&quot;</span><span class="p">)</span> <span class="p">{</span> <span class="mi">5</span> <span class="p">}</span> <span class="o">%&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="ss">development</span><span class="p">:</span>
+</span><span class='line'>  <span class="o">&lt;&lt;</span><span class="p">:</span> <span class="o">*</span><span class="n">default</span>
+</span><span class='line'>  <span class="ss">database</span><span class="p">:</span> <span class="n">receta_development</span>
+</span><span class='line'>  <span class="ss">host</span><span class="p">:</span> <span class="n">localhost</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>然后，用rake db来验证下。</p>
+
+<figure class='code'><figcaption><span>terminal </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>&gt; rake db:create
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>再到Postico里看下，耶，出来了~</p>
+
+<p class="no-indent"><img src="http://xujianmin.github.io/images/20160808/postico_with_rails_db.png"></p>
+
+
+<p>最后跑下rails s，看看欢迎界面出来了吗？</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[如何用Savon来实现Java的WebService]]></title>
+    <link href="http://xujianmin.github.io/blog/2016/04/24/ru-he-yong-savonlai-shi-xian-javade-webservice/"/>
+    <updated>2016-04-24T14:15:19+08:00</updated>
+    <id>http://xujianmin.github.io/blog/2016/04/24/ru-he-yong-savonlai-shi-xian-javade-webservice</id>
+    <content type="html"><![CDATA[<h1>This is a bulliton.</h1>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[坐着火车去旅行]]></title>
