@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-04-30T15:40:33+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">自在几米墟</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-04-30T16:00:35+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">自在几米墟</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
 --- keep NO CHANGE for now.</subtitle><entry><title type="html">Welcome to Jekyll!</title><link href="http://localhost:4000/jekyll/update/2020/04/15/welcome-to-jekyll.html" rel="alternate" type="text/html" title="Welcome to Jekyll!" /><published>2020-04-15T18:51:55+08:00</published><updated>2020-04-15T18:51:55+08:00</updated><id>http://localhost:4000/jekyll/update/2020/04/15/welcome-to-jekyll</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2020/04/15/welcome-to-jekyll.html">&lt;p&gt;You’ll find this post in your &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
 
 &lt;p&gt;Jekyll requires blog post files to be named according to the following format:&lt;/p&gt;
@@ -68,7 +68,7 @@ Mongoid is a Ruby gem for interacting with MongoDB. Here I show the basics of se
 
 &lt;p&gt;如果我们访问下我们的Rails应用就会发现scaffolding已经被生成并且正常工作了。我们能够创建新的“产品”并保存到数据库。不再需要运行任何migrations和新建、配置一个数据库。&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/images/20140203/pic01.png'&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/20140203/pic01.png&quot; alt=&quot;1&quot; /&gt;&lt;/p&gt;
 
 &lt;h1 id=&quot;修改一个模型&quot;&gt;修改一个模型&lt;/h1&gt;
 
@@ -113,7 +113,7 @@ Mongoid is a Ruby gem for interacting with MongoDB. Here I show the basics of se
 
 &lt;p&gt;如果我们现在更新一个product，且把姓名（name）字段留空，我们会看到一条错误信息。&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/images/20140203/pic02.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/20140203/pic02.png&quot; alt=&quot;2&quot; /&gt;&lt;/p&gt;
 
 &lt;h1 id=&quot;用mongodb查询&quot;&gt;用MongoDB查询&lt;/h1&gt;
 
@@ -194,7 +194,7 @@ Mongoid is a Ruby gem for interacting with MongoDB. Here I show the basics of se
 
 &lt;p&gt;如果我们查看一个产品的URL，会看到如下图的这个样子，不像一个通常意义上的唯一标示符。&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/images/20140203/pic03.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/20140203/pic03.png&quot; alt=&quot;3&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;如果我们想要的话，其实是有一些方法可以把把它改得稍稍美观一些。一个选择类似于ActiveRecord，我们可以覆写to_param方法。但是这里，我们会展示另一种方式——通过覆写Mongoid的_id字段。&lt;/p&gt;
 
@@ -203,7 +203,7 @@ Mongoid is a Ruby gem for interacting with MongoDB. Here I show the basics of se
 
 &lt;p&gt;这一步的关键在于给_id字段设定一个默认值。我们使用一个Proc对象来动态设定它为这个产品的名字，然后参数化（parameterized）这个产品名称以合规URL安全要求。现在我们创建一个新的产品，它的名字变成了它部分的URL了。&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/images/20140203/pic04.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/20140203/pic04.png&quot; alt=&quot;4&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;当我们使用（Mongoid）这个方法时，需要关注一些事情。其中之一是，无论何时我们创建一个新的Product实例时，我们总是需要同时设定它的名字。如果没有这样做，那么这个产品的id将会是一个空的字符串，而且，就算以后我们再试图设定它的名字时，id还是会是一个空字符串。同样地，我们需要确定id是唯一的，因此，在此种情境下，我们必须添加一些校验。&lt;/p&gt;
 
