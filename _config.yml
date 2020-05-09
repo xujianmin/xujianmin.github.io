@@ -40,6 +40,7 @@ author: 几米墟
 plugins:
   - jekyll-feed
   - jekyll-paginate
+  - jekyll-avatar
 
 # Exclude from processing.
 # The following items will not be processed, by default.
