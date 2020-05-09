@@ -21,10 +21,7 @@
 title: 自在几米墟
 email: jianmin.xu@usingnow.com
 description: >- # this means to ignore newlines until "baseurl:"
-  Yesterday is histroy,
-  Tomorrow is mystery,
-  But today is a gift,
-  So we call that present.
+  暧暧远人村，依依墟里烟。户庭无尘杂，虚室有余闲。
 baseurl: "/" # the subpath of your site, e.g. /blog
 url: "https://xujianmin.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: 
@@ -35,6 +32,10 @@ theme:              jekyll-theme-clean-blog
 markdown:           kramdown
 paginate:           5
 paginate_path:      "/posts/page:num/"
+
+highlighter: rouge
+
+author: 几米墟
 
 plugins:
   - jekyll-feed
