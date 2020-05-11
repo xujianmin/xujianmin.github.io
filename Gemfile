@@ -16,6 +16,8 @@ gem "jekyll", "~> 3.6"
 # If you have any plugins, put them here!
 
 gem "jekyll-theme-clean-blog"
+gem "rouge"
+gem "jekyll-avatar"
 
 group :jekyll_plugins do
   gem "jekyll-feed", "~> 0.12"

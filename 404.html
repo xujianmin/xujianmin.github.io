@@ -1,10 +1,11 @@
 ---
 permalink: /404.html
 layout: default
+background: "/assets/img/bg-index-new.jpg"
 ---
 
-<style type="text/css" media="screen">
-  .container {
+<!-- <style type="text/css" media="screen">
+  .container-404 {
     margin: 10px auto;
     max-width: 600px;
     text-align: center;
@@ -15,11 +16,30 @@ layout: default
     line-height: 1;
     letter-spacing: -1px;
   }
-</style>
+</style> -->
 
-<div class="container">
+{% if page.background %}
+<header class="masthead" style="background-image: url('{{ page.background | prepend: site.baseurl | replace: '//', '/' }}')">
+  {% else %}
+  <header class="masthead">
+    {% endif %}
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="page-heading">
+            <h1>404</h1>
+            <span class="subheading">无此文章 / Page not found :(</span>
+            <span class="subheading">没有找到您选择的文章 / The requested page could not be found.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+<!-- <div class="container container-404">
   <h1>404</h1>
 
-  <p><strong>Page not found :(</strong></p>
-  <p>The requested page could not be found.</p>
-</div>
+  <p><strong>没有此文章 / Page not found :(</strong></p>
+  <p>无法找到您选择的文章 / The requested page could not be found.</p>
+</div> -->
