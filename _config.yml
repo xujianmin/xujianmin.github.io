@@ -1,5 +1,8 @@
 # The Site Configuration
 
+# Bump when replacing favicons (cache busting for browsers / PWA)
+favicon_version: "2"
+
 # Import the theme
 theme: jekyll-theme-chirpy
 

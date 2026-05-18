@@ -1,0 +1,22 @@
+{
+  "name": "自在几米墟",
+  "short_name": "几米墟",
+  "description": "几米墟 · AI 与 toB 思考者的个人思想主场",
+  "icons": [
+    {
+      "src": "/assets/img/favicons/web-app-manifest-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/img/favicons/web-app-manifest-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "start_url": "/",
+  "theme_color": "#000000",
+  "background_color": "#000000",
+  "display": "standalone"
+}
